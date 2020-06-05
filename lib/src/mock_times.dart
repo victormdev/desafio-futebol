@@ -1,9 +1,9 @@
 import 'time.dart';
 
 final mockTimes = <Time>[
-  Time(11, 'Bahia', 1888),
-  Time(12, 'São Paulo', 2000),
-  Time(13, 'Palmeiras', 2000),
-  Time(14, 'Vitória', 2000),
-  Time(15, 'Corinthins', 1910)
+  Time('Bahia', 'Bahia', 1888),
+  Time('São Paulo', 'São Paulo', 2000),
+  Time('São Paulo', 'Palmeiras', 2000),
+  Time('Bahia', 'Vitória', 2000),
+  Time('São Paulo', 'Corinthins', 1910)
 ];
