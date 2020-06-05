@@ -1,6 +1,6 @@
 class Time {
-  final int id;
+  final int id, ano;
   String name;
 
-  Time(this.id, this.name);
+  Time(this.id, this.name, this.ano);
 }
