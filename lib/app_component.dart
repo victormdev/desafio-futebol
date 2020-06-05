@@ -1,4 +1,5 @@
 import 'package:angular/angular.dart';
+import 'package:angular_forms/angular_forms.dart';
 import 'time.dart';
 
 @Component(
@@ -14,6 +15,7 @@ import 'time.dart';
     <input [(ngModel)]="time.name" placeholder="Digite o nome do time aqui">
   </div>
   ''',
+  directives: [formDirectives],
 )
 class AppComponent {
   final title = 'Sistema de cadastro de times de futebol';
