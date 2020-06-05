@@ -1,0 +1,7 @@
+# Build
+.dart_tool/
+
+# Visual Studio
+.vs/
+.vscode/
+*.code-workspace
