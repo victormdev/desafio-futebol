@@ -1,0 +1,10 @@
+<h3>Times recentes</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let time of times" class="col-1-4"
+     [routerLink]="timeUrl(time.id)">
+    <div class="module hero">
+      <h4>{{time.nome}}</h4>
+    </div>
+  </a>
+</div>
+<time-search></time-search>

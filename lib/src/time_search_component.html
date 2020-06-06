@@ -1,0 +1,12 @@
+<div id="search-component">
+  <h4>Pesquisa de Times</h4>
+  <input #searchBox id="search-box"
+         (change)="search(searchBox.value)"
+         (keyup)="search(searchBox.value)" />
+  <div>
+    <div *ngFor="let time of times | async"
+         (click)="gotoDetail(time)" class="search-result" >
+      {{time.nome}}
+    </div>
+  </div>
+</div>

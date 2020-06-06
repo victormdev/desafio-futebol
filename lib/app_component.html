@@ -2,6 +2,17 @@
 <h2>Times</h2>
 <ul class="times">
   <li *ngFor="let time of times">
-    ID: {{time.id}}Estado: {{time.estado}} - Nome: {{time.nome}} - Ano: {{time.ano}} 
+    ID: {{time.id}} Estado: {{time.estado}} - Nome: {{time.nome}} - Ano: {{time.ano}} 
   </li>
 </ul>
+<button (click)="save()">Salvar</button>
+<h3>Top Times</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let time of times" class="col-1-4"
+     [routerLink]="timeUrl(time.id)">
+    <div class="module hero">
+      <h4>{{time.name}}</h4>
+    </div>
+  </a>
+</div>
+<time-search></time-search>

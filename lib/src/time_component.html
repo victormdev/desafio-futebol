@@ -1,0 +1,11 @@
+<div *ngIf="time != null">
+  <h2>{{time.nome}}</h2>
+  <div>
+    <label>id: </label>{{time.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="time.nome" placeholder="nome" />
+  </div>
+  <button (click)="goBack()">Voltar</button>
+  <button (click)="save()">Savar</button>
+</div>

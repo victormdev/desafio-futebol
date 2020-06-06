@@ -7,11 +7,11 @@ import 'src/time.dart';
 
 class InMemoryDataService extends MockClient {
   static final _initialTimes = [
-    {1, 'Bahia', 'Bahia de Feira', 1888},
-    {2, 'São Paulo', 'Santos', 2000},
-    {3, 'São Paulo', 'Palmeiras', 2000},
-    {4, 'Bahia', 'Vitória', 2000},
-    {5, 'São Paulo', 'Corinthins', 1910}
+    {'id': 1, 'estado': 'Bahia', 'nome': 'Bahia de Feira', 'ano': 1888},
+    {'id': 2, 'estado': 'São Paulo', 'nome': 'Santos', 'ano': 1888},
+    {'id': 3, 'estado': 'São Paulo', 'nome': 'Palmeiras', 'ano': 1888},
+    {'id': 4, 'estado': 'Bahia', 'nome': 'Vitória', 'ano': 1888},
+    {'id': 5, 'estado': 'São Paulo', 'nome': 'Corinthians', 'ano': 1888}
   ];
   
   static List<Time> _timesDb;
@@ -57,10 +57,11 @@ class InMemoryDataService extends MockClient {
         headers: {'content-type': 'application/json'});
   }
   static resetDb() {
-    // _timesDb = _initialTimes.map((json) => Time.fromJson(json)).toList();
+    _timesDb = _initialTimes.map((json) => Time.fromJson(json)).toList();
     _nextId = _timesDb.map((time) => time.id).fold(0, max) + 1;
   }
   static String lookUpName(int id) =>
       _timesDb.firstWhere((time) => time.id == id, orElse: null)?.nome;
+
   InMemoryDataService() : super(_handler);
 }

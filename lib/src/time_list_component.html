@@ -1,0 +1,14 @@
+<h2>Times</h2>
+<ul class="times">
+  <li *ngFor="let time of times"
+      [class.selected]="time === selected"
+      (click)="onSelect(time)">
+    <span class="badge">{{time.id}}</span> {{time.nome}}
+  </li>
+</ul>
+<div *ngIf="selected != null">
+  <h2>
+    {{selected.nome | uppercase}} é o meu time!
+  </h2>
+  <button (click)="gotoDetail()">Ver Detalhes</button>
+</div>
