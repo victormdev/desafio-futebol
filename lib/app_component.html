@@ -1,8 +1,7 @@
 <h1>{{title}}</h1>
 <h2>Times</h2>
-<ul class="heroes">
+<ul class="times">
   <li *ngFor="let time of times">
-    <span class="badge">{{time.estado}}</span> {{time.name}}
-    <span class="badge">Ano{{time.ano}}</span>
+    Estado: {{time.estado}} - Nome: {{time.name}} - Ano: {{time.ano}} 
   </li>
 </ul>
