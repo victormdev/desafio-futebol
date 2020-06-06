@@ -29,5 +29,10 @@ class TimeComponent implements OnActivate {
       await _timeService.update(time);
       goBack();
     }
+  Future<void> delete() async {
+      await _timeService.delete(time.id);
+      goBack();
+    }
+
   void goBack() => _location.back();
 }

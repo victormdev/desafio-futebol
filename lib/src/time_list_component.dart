@@ -25,7 +25,14 @@ class TimeListComponent implements OnInit {
   Future<void> _getTimes() async {
     times = await _timeService.getAll();
   }
-
+  Future<void> add(String estado, nome, ano) async {
+  nome = nome.trim();
+  estado = estado.trim();
+  if (nome.isEmpty) return null;
+  if (estado.isEmpty) return null;
+  times.add(await _timeService.create(estado, nome, ano));
+  selected = null;
+}
   void ngOnInit() => _getTimes();
 
   void onSelect(Time time) => selected = time;
