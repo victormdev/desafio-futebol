@@ -14,7 +14,7 @@ import 'src/time_service.dart';
 class AppComponent {
   final title = 'Sistema de cadastro de times de futebol';
   List<Time> times = mockTimes;
-  Time time = Time('São Paulo', 'Corinthians', 1910);
+  Time time = Time(1, 'São Paulo', 'Corinthians', 1910);
   final TimeService _timeService;
   AppComponent(this._timeService);
 

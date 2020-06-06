@@ -3,52 +3,51 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
-import 'src/hero.dart';
+import 'src/time.dart';
+
 class InMemoryDataService extends MockClient {
-  static final _initialHeroes = [
-    {'id': 11, 'name': 'Mr. Nice'},
-    {'id': 12, 'name': 'Narco'},
-    {'id': 13, 'name': 'Bombasto'},
-    {'id': 14, 'name': 'Celeritas'},
-    {'id': 15, 'name': 'Magneta'},
-    {'id': 16, 'name': 'RubberMan'},
-    {'id': 17, 'name': 'Dynama'},
-    {'id': 18, 'name': 'Dr IQ'},
-    {'id': 19, 'name': 'Magma'},
-    {'id': 20, 'name': 'Tornado'}
+  static final _initialTimes = [
+    {1, 'Bahia', 'Bahia de Feira', 1888},
+    {2, 'São Paulo', 'Santos', 2000},
+    {3, 'São Paulo', 'Palmeiras', 2000},
+    {4, 'Bahia', 'Vitória', 2000},
+    {5, 'São Paulo', 'Corinthins', 1910}
   ];
-  static List<Hero> _heroesDb;
+  
+  static List<Time> _timesDb;
   static int _nextId;
   static Future<Response> _handler(Request request) async {
-    if (_heroesDb == null) resetDb();
+    if (_timesDb == null) resetDb();
     var data;
     switch (request.method) {
       case 'GET':
         final id = int.tryParse(request.url.pathSegments.last);
         if (id != null) {
-          data = _heroesDb
-              .firstWhere((hero) => hero.id == id); // throws if no match
+          data = _timesDb
+              .firstWhere((time) => time.id == id); // throws if no match
         } else {
           String prefix = request.url.queryParameters['name'] ?? '';
           final regExp = RegExp(prefix, caseSensitive: false);
-          data = _heroesDb.where((hero) => hero.name.contains(regExp)).toList();
+          data = _timesDb.where((time) => time.nome.contains(regExp)).toList();
         }
         break;
       case 'POST':
-        var name = json.decode(request.body)['name'];
-        var newHero = Hero(_nextId++, name);
-        _heroesDb.add(newHero);
-        data = newHero;
+        var nome = json.decode(request.body)['nome'];
+        var estado = json.decode(request.body)['estado'];
+        var ano = json.decode(request.body)['ano'];
+        var newTime = Time(_nextId++, estado, nome, ano );
+        _timesDb.add(newTime);
+        data = newTime;
         break;
       case 'PUT':
-        var heroChanges = Hero.fromJson(json.decode(request.body));
-        var targetHero = _heroesDb.firstWhere((h) => h.id == heroChanges.id);
-        targetHero.name = heroChanges.name;
-        data = targetHero;
+        var timeChanges = Time.fromJson(json.decode(request.body));
+        var targetTime = _timesDb.firstWhere((h) => h.id == timeChanges.id);
+        targetTime.nome = timeChanges.nome;
+        data = targetTime;
         break;
       case 'DELETE':
         var id = int.parse(request.url.pathSegments.last);
-        _heroesDb.removeWhere((hero) => hero.id == id);
+        _timesDb.removeWhere((time) => time.id == id);
         // No data, so leave it as null.
         break;
       default:
@@ -58,10 +57,10 @@ class InMemoryDataService extends MockClient {
         headers: {'content-type': 'application/json'});
   }
   static resetDb() {
-    _heroesDb = _initialHeroes.map((json) => Hero.fromJson(json)).toList();
-    _nextId = _heroesDb.map((hero) => hero.id).fold(0, max) + 1;
+    // _timesDb = _initialTimes.map((json) => Time.fromJson(json)).toList();
+    _nextId = _timesDb.map((time) => time.id).fold(0, max) + 1;
   }
   static String lookUpName(int id) =>
-      _heroesDb.firstWhere((hero) => hero.id == id, orElse: null)?.name;
+      _timesDb.firstWhere((time) => time.id == id, orElse: null)?.nome;
   InMemoryDataService() : super(_handler);
 }
