@@ -1,5 +1,6 @@
 class Time {
-  final int id, ano;
+  final int id;
+  var ano;
   String nome;
   String estado;
   Time(this.id, this.estado, this.nome, this.ano);

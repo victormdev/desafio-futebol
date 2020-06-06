@@ -1,11 +1,20 @@
 <div *ngIf="time != null">
   <h2>{{time.nome}}</h2>
+  <h2 *ngIf="!time.nome" style="color: red">Time sem nome!</h2>
   <div>
-    <label>id: </label>{{time.id}}</div>
+    <label>ID: </label>{{time.id}}</div>
   <div>
-    <label>name: </label>
-    <input [(ngModel)]="time.nome" placeholder="nome" />
+    <label>Nome: </label>
+    <input [(ngModel)]="time.nome" placeholder="Nome" />
+  </div>
+  <div>
+    <label>Estado: </label>
+    <input [(ngModel)]="time.estado" placeholder="Estado" />
+  </div>
+  <div>
+    <label>Ano: </label>
+    <input [(ngModel)]="time.ano" placeholder="Ano" />
   </div>
   <button (click)="goBack()">Voltar</button>
-  <button (click)="save()">Savar</button>
+  <button (click)="save()">Salvar</button>
 </div>

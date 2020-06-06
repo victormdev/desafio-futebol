@@ -44,10 +44,10 @@ class TimeService {
  }
 
   // cadastrar um time
-  Future<Time> create(String nome) async {
+  Future<Time> create(String nome, estado, int ano) async {
     try {
       final response = await _http.post(_timesUrl,
-          headers: _headers, body: json.encode({'nome': nome}));
+          headers: _headers, body: json.encode({'nome': nome, 'estado': estado, 'ano': ano}));
       return Time.fromJson(_extractData(response));
     } catch (e) {
       throw _handleError(e);
