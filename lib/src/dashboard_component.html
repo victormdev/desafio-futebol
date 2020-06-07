@@ -1,6 +1,6 @@
-<h3>Times recentes</h3>
 <time-search></time-search>
-<div class="grid grid-pad">
+<h3 style="margin-top: 20px;">TOP 4 TIMES</h3>
+<div class="grid grid-pad" style="margin-left: 20px; margin-top: 40px;">
   <a *ngFor="let time of times" class="col-1-4"
      [routerLink]="timeUrl(time.id)">
     <div class="module hero">

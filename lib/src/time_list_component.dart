@@ -27,11 +27,12 @@ class TimeListComponent implements OnInit {
     times = await _timeService.getAll();
   }
   // cadastra um novo time
-  Future<void> add(String estado, nome, ano) async {
+  Future<void> add(String estado, String nome, ano) async {
   nome = nome.trim();
   estado = estado.trim();
   if (nome.isEmpty) return null;
   if (estado.isEmpty) return null;
+  if (ano == "") return null;
   times.add(await _timeService.create(estado, nome, ano));
   selected = null;
 }

@@ -4,20 +4,20 @@
       <div class="form-row">
         <div class="col-md-4">
             <label>Nome</label>
-          <input #heroName type="text" class="form-control" placeholder="Nome do time">
+          <input #timeName type="text" class="form-control" placeholder="Nome do time">
         </div>
         <div class="col-md-4">
           <label>Estado</label>
-          <input #heroName type="text" class="form-control" placeholder="Estado do time">
+          <input #timeEstado type="text" class="form-control" placeholder="Estado do time">
         </div>
         <div class="col-md-4">
           <label>Ano de criação</label>
-          <input #heroName type="text" class="form-control" placeholder="Ano de criação">
+          <input #timeAno type="text" class="form-control" placeholder="Ano de criação">
         </div>
         <div class="col-md-4">
         </div>
         <div class="col-md-4" style="text-align: center; margin-top: 2%;">
-          <button (click)="add(heroName.name, heroName.value, heroName.value); heroName.value=''">Cadastrar time</button>
+          <button (click)="add(timeName.name, timeEstado.value, timeAno.value); timeName.value=''">Cadastrar time</button>
         </div>
         <div class="col-md-4">
         </div>
