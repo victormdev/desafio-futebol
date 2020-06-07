@@ -6,12 +6,13 @@ import 'package:http/testing.dart';
 import 'src/time.dart';
 
 class InMemoryDataService extends MockClient {
+  // dados cadastrados previamente para manipulação
   static final _initialTimes = [
-    {'id': 1, 'estado': 'Bahia', 'nome': 'Bahia de Feira', 'ano': 1888},
-    {'id': 2, 'estado': 'São Paulo', 'nome': 'Santos', 'ano': 1888},
-    {'id': 3, 'estado': 'São Paulo', 'nome': 'Palmeiras', 'ano': 1888},
-    {'id': 4, 'estado': 'Bahia', 'nome': 'Vitória', 'ano': 1888},
-    {'id': 5, 'estado': 'São Paulo', 'nome': 'Corinthians', 'ano': 1888}
+    {'id': 1, 'estado': 'Bahia', 'nome': 'Bahia de Feira', 'ano': 1937},
+    {'id': 2, 'estado': 'São Paulo', 'nome': 'Santos', 'ano': 1912},
+    {'id': 3, 'estado': 'São Paulo', 'nome': 'Palmeiras', 'ano': 1914},
+    {'id': 4, 'estado': 'Bahia', 'nome': 'Vitória', 'ano': 1899},
+    {'id': 5, 'estado': 'São Paulo', 'nome': 'Corinthians', 'ano': 1910}
   ];
   
   static List<Time> _timesDb;
@@ -32,8 +33,8 @@ class InMemoryDataService extends MockClient {
         }
         break;
       case 'POST':
-        var nome = json.decode(request.body)['nome'];
         var estado = json.decode(request.body)['estado'];
+        var nome = json.decode(request.body)['nome'];
         var ano = json.decode(request.body)['ano'];
         var newTime = Time(_nextId++, estado, nome, ano );
         _timesDb.add(newTime);
@@ -43,6 +44,8 @@ class InMemoryDataService extends MockClient {
         var timeChanges = Time.fromJson(json.decode(request.body));
         var targetTime = _timesDb.firstWhere((h) => h.id == timeChanges.id);
         targetTime.nome = timeChanges.nome;
+        targetTime.estado = timeChanges.estado;
+        targetTime.ano = timeChanges.ano;
         data = targetTime;
         break;
       case 'DELETE':
