@@ -3,7 +3,7 @@
   <input type="text" #searchBox id="search-box"
          (change)="search(searchBox.value)"
          (keyup)="search(searchBox.value)" />
-  <div>
+  <div style="margin-left: 42%">
     <div *ngFor="let time of times | async"
          (click)="gotoDetail(time)" class="search-result" >
       {{time.nome}}
