@@ -22,9 +22,11 @@ class TimeListComponent implements OnInit {
 
   TimeListComponent(this._timeService, this._router);
 
+  // retorna todos os times
   Future<void> _getTimes() async {
     times = await _timeService.getAll();
   }
+  // cadastra um novo time
   Future<void> add(String estado, nome, ano) async {
   nome = nome.trim();
   estado = estado.trim();

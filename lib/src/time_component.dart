@@ -20,15 +20,20 @@ class TimeComponent implements OnActivate {
 
   TimeComponent(this._timeService, this._location);
 
+  // retorna um time pelo ID
   @override
   void onActivate(_, RouterState current) async {
     final id = getId(current.parameters);
     if (id != null) time = await (_timeService.get(id));
   }
+
+  // atualiza um time já existente
   Future<void> save() async {
       await _timeService.update(time);
       goBack();
     }
+
+  // apaga um time
   Future<void> delete() async {
       await _timeService.delete(time.id);
       goBack();

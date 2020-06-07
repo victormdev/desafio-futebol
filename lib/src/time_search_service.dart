@@ -10,6 +10,7 @@ class TimeSearchService {
 
   TimeSearchService(this._http);
 
+  // mecanismo de pesquisa dos times cadastrados
   Future<List<Time>> search(String term) async {
     try {
       final response = await _http.get('app/times/?nome=$term');
