@@ -2,6 +2,7 @@ import 'package:angular_router/angular_router.dart';
 
 const idParam = 'id';
 
+// rotas 
 class RoutePaths {
   static final dashboard = RoutePath(path: 'dashboard');
   static final times = RoutePath(path: 'times');

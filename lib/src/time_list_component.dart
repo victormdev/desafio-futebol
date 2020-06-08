@@ -43,6 +43,7 @@ class TimeListComponent implements OnInit {
   String _timeUrl(int id) =>
       RoutePaths.time.toUrl(parameters: {idParam: '$id'});
 
+  // detalhes do time por ID
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(_timeUrl(selected.id));
 }

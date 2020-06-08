@@ -6,6 +6,7 @@ import 'package:http/testing.dart';
 import 'src/time.dart';
 
 class InMemoryDataService extends MockClient {
+
   // dados cadastrados previamente para manipulação
   static final _initialTimes = [
     {'id': 1, 'estado': 'Bahia', 'nome': 'Bahia de Feira', 'ano': 1937},
@@ -21,6 +22,8 @@ class InMemoryDataService extends MockClient {
     if (_timesDb == null) resetDb();
     var data;
     switch (request.method) {
+
+      // método de requisição para retornar
       case 'GET':
         final id = int.tryParse(request.url.pathSegments.last);
         if (id != null) {
@@ -32,6 +35,8 @@ class InMemoryDataService extends MockClient {
           data = _timesDb.where((time) => time.nome.contains(regExp)).toList();
         }
         break;
+
+      // método de requisição para cadastrar um time
       case 'POST':
         var estado = json.decode(request.body)['estado'];
         var nome = json.decode(request.body)['nome'];
@@ -40,6 +45,8 @@ class InMemoryDataService extends MockClient {
         _timesDb.add(newTime);
         data = newTime;
         break;
+
+      // método de requisição para atualizar um time existente pelo seu ID
       case 'PUT':
         var timeChanges = Time.fromJson(json.decode(request.body));
         var targetTime = _timesDb.firstWhere((h) => h.id == timeChanges.id);
@@ -48,6 +55,8 @@ class InMemoryDataService extends MockClient {
         targetTime.ano = timeChanges.ano;
         data = targetTime;
         break;
+
+      // método de requisição para excluir um time pelo seu ID
       case 'DELETE':
         var id = int.parse(request.url.pathSegments.last);
         _timesDb.removeWhere((time) => time.id == id);

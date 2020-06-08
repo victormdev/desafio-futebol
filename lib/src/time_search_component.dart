@@ -40,6 +40,7 @@ class TimeSearchComponent implements OnInit {
  String _timeUrl(int id) =>
      RoutePaths.time.toUrl(parameters: {idParam: '$id'});
 
+// detalhes do time
  Future<NavigationResult> gotoDetail(Time time) =>
     _router.navigate(_timeUrl(time.id));
 }
