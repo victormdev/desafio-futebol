@@ -1,3 +1,7 @@
+## Observações
+Consegui implementar grande parte das funcionalidades. Exceto: cadastro e contagem.
+Peço que relevem o layout, pois não tive tempo o suficiente pra trabalhar com a UX/UI.
+
 ## Setup for Development
 
 Welcome to the example app used in the
